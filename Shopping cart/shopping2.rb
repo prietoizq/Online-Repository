@@ -68,6 +68,13 @@ class ShoppingCart
 		@list.each do |value|
 			v += $prizes[value]
 		end
+
+		v = v - (@n_apples/2).floor*$prizes[:apples] #Descuento de 2x1
+		v = v - (@n_oranges/3).floor*$prizes[:oranges] #Descuento de 3x2
+		if @n_bananas>0 && @n_grapes>3 #banana gratis x 4 uvas
+			v = v - $prizes[:bananas]
+		end
+		
 		puts "\n Total cost: #{v} $"
 	end
 
@@ -76,9 +83,12 @@ end
 cart = ShoppingCart.new
 
 cart.add :apples
+cart.add :apples
 cart.add :bananas
 cart.add :bananas
 cart.add :bananas
+cart.add :grapes
+cart.add :grapes
 cart.add :grapes
 cart.add :watermelon
 cart.add :grapes

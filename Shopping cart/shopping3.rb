@@ -1,4 +1,23 @@
-$prizes = {apples:10, oranges:5, grapes:15, bananas:20, watermelon:50}
+def season (s)
+	case s
+	when "Spring"
+		$prizes = {apples:10, oranges:5, grapes:15, bananas:20}
+	when "Summer"
+		$prizes = {apples:10, oranges:2, grapes:15, bananas:20}
+	when "Autumn"
+		$prizes = {apples:15, oranges:5, grapes:15, bananas:20}
+	when "Winter"
+		$prizes = {apples:12, oranges:5, grapes:15, bananas:21}
+	end
+end
+
+def day_week (d)
+	if d == "Sunday"
+		$prizes[:watermelon]=100
+	else
+		$prizes[:watermelon]=50
+	end
+end
 
 class ShoppingCart
 	def initialize
@@ -68,17 +87,31 @@ class ShoppingCart
 		@list.each do |value|
 			v += $prizes[value]
 		end
+
+		v = v - (@n_apples/2).floor*$prizes[:apples] #Descuento de 2x1
+		v = v - (@n_oranges/3).floor*$prizes[:oranges] #Descuento de 3x2
+		if @n_bananas>0 && @n_grapes>3 #banana gratis x 4 uvas
+			v = v - $prizes[:bananas]
+		end
+		
 		puts "\n Total cost: #{v} $"
 	end
 
 end
 
+
+season("Winter")
+day_week("Sunday")
+
 cart = ShoppingCart.new
 
+cart.add :apples
 cart.add :apples
 cart.add :bananas
 cart.add :bananas
 cart.add :bananas
+cart.add :grapes
+cart.add :grapes
 cart.add :grapes
 cart.add :watermelon
 cart.add :grapes
