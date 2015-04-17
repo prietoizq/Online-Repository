@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  root :to => "laptops#index"
+  root :to => "backpacks#index"
   resources :laptops
+  resources :backpacks
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
