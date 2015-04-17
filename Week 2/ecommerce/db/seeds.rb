@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Laptop.create( name: "Laptop 1", brand: "Toshiba", model: "Satellite 15.6", processor: "Intel Celeron", ram: 4, price: 229.99)
+Laptop.create( name: "Laptop 2", brand: "HP", model: "Touch-Screen Laptop", processor: "Intel Core i3", ram: 6, price: 399.99)
+Laptop.create( name: "Laptop 3", brand: "Apple", model: "MacBook Air", processor: "Intel Core i5", ram: 4, price: 949.99)
+Laptop.create( name: "Laptop 4", brand: "Lenovo", model: "15.6 Laptop", processor: "AMD A8", ram: 6, price: 329.99)
