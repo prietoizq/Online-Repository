@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root :to => "backpacks#index"
+  root :to => "welcome#index"
   resources :laptops
   resources :backpacks
   # The priority is based upon order of creation: first created -> highest priority.
