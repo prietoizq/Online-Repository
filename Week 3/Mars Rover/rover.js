@@ -1,5 +1,7 @@
 var myRover = {position: [0,0], positionOld: [0,0], direction: 'N'};
-var grid = [[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]];
+var grid = [[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,1,0,0,0],[0,0,1,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,1,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,1,0,0,0],[0,0,0,1,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,1,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]];
+            //Los valores de 0 son tierra normal, y los valores de 1 son obstáculos
+var obstacle = false;
 
 
 function goForward(rover) {
@@ -82,17 +84,23 @@ function updateRover(rover){
     if(x=== -1){rover.position[1] = 9};
     if(x=== 10){rover.position[1] = 0};
 
+    if (grid[rover.position[0]][rover.position[1]] === 1){ //si encuentra un obstáculo, vuelve a la posición anterior
+      console.log("Oops! I have found an obstacle! I return to my last position");
+      rover.position[0] = rover.positionOld[0];
+      rover.position[1] = rover.positionOld[1];
+      obstacle = true;    //si encuentra un obstáculo, la variable obstacle se hace verdadera
+    }else{
+    
     grid[rover.positionOld[0]][rover.positionOld[1]] = 0; //el valor que ocupaba el rover (R) en la posición anterior se sustituye con un 0
     
     console.log(rover); //Antes de actualizar la posición antigua con la nueva, se muestra el rover en la consola para que puedan verse las diferencias entre las dos posiciones
 
-    
     grid[rover.position[0]][rover.position[1]] = "R"; //el nuevo valor que ocupa el rover (R)
     console.log(grid);
     
     rover.positionOld[0] = rover.position[0]; //se actualiza la posición antigua con la nueva
     rover.positionOld[1] = rover.position[1];
-
+    }
 }
 
 function seeRover(rover){
@@ -101,7 +109,9 @@ function seeRover(rover){
 }
 
 function control(rover, orders){
+  obstacle = false;                           //la variable de haber encontrado un obstáculo se reinicia
     for(var i=0, l=orders.length; i<l; i+=1){
+      if(obstacle === false){                 //Si se encuentra con un obstáculo, dejan de ejecutarse instrucciones
       switch (orders[i]){
         case 'f':
           goForward(rover);
@@ -116,8 +126,9 @@ function control(rover, orders){
           turnLeft(rover);
           break;
       }
+      }
     }
 }
 
 
-//goForward(myRover);
+//control(myRover,"fffffrfflffffff");
