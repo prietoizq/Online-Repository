@@ -1,4 +1,5 @@
-var myRover = {position: [0,0], positionOld: [0,0], direction: 'N'};
+var myRover = {name: "MyRover", position: [0,0], positionOld: [0,0], direction: 'N'};
+var mySecondRover = {name: "MySecondRover", position: [9,9], positionOld: [9,9], direction: 'N'};
 var grid = [[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,1,0,0,0],[0,0,1,0,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,1,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,0,1,0,0,0],[0,0,0,1,0,0,0,0,0,0],[0,0,0,0,0,0,0,0,0,0],[0,0,0,0,0,1,0,0,0,0],[0,0,0,0,0,0,0,0,0,0]];
             //Los valores de 0 son tierra normal, y los valores de 1 son obstáculos
 var obstacle = false;
@@ -84,7 +85,8 @@ function updateRover(rover){
     if(x=== -1){rover.position[1] = 9};
     if(x=== 10){rover.position[1] = 0};
 
-    if (grid[rover.position[0]][rover.position[1]] === 1){ //si encuentra un obstáculo, vuelve a la posición anterior
+    if (grid[rover.position[0]][rover.position[1]] === 1 || grid[rover.position[0]][rover.position[1]] === "R"){ 
+    //si encuentra un obstáculo u otro Rover, vuelve a la posición anterior
       console.log("Oops! I have found an obstacle! I return to my last position");
       rover.position[0] = rover.positionOld[0];
       rover.position[1] = rover.positionOld[1];
@@ -132,3 +134,5 @@ function control(rover, orders){
 
 
 //control(myRover,"fffffrfflffffff");
+//control(mySecondRover, "ffflffffffffffff");
+//control(mySecondRover, "rffflfffff");
