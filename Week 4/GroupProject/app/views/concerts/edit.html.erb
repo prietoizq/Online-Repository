@@ -1,0 +1,46 @@
+
+
+
+<div id="container_edit">
+<h1> Editing concert </h1>
+<%= form_for :concert, url: concert_path(@concert), method: :patch do |f| %>
+
+  <table border="1" cellspacing="0">
+        <tr>
+             <td class="title"><%= f.label :name %></td>
+             <td class="title"><%= f.text_field :name %></td>
+        </tr>
+
+        <tr>
+            <td class="title"><%= f.label :venue %></td>
+            <td class="title"><%= f.text_field :venue %></td>
+         </tr>
+
+         <tr>
+             <td class="title"><%= f.label :city %></td>
+             <td class="title"><%= f.text_field :city %></td>
+          </tr>
+
+          <tr>
+            <td class="title"><%= f.label :date %></td>
+            <td class="title"><%= f.text_field :date %></td>
+          </tr>
+
+          <tr>
+             <td class="title"><%= f.label :price %></td>
+             <td class="title"><%= f.text_field :price %></td>
+          </tr>
+
+          <tr>
+             <td class="title"><%= f.label :description %></td>
+             <td class="title"><%= f.text_area :description %></td>
+          </tr>
+      </table>
+
+    <p><%= f.submit %></p>
+ </div>
+  <% end %>
+
+    <div id="back_button"><%= link_to 'Back', concerts_path %></div>
+
+<footer id="f_edit"> Grupo4 </footer>

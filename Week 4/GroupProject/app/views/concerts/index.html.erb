@@ -1,0 +1,30 @@
+<header> CONCIERTOS </header>
+
+<div id="container_index">
+	<h1 id="index_h_one"> LISTA DE CONCIERTOS MADRID </h1>
+
+	<div id="index_links"> 
+
+		<table border="1" cellspacing="0" align="center">
+			<% @concerts.each do |concert| %>
+
+		<div> 
+			<tr id="group_name"><td rowspan="2"><%= concert.name %></td></tr>
+			<tr>
+				<td><%= link_to "Show", concert_path(concert)%></td>
+				<td><%= link_to "Edit", edit_concert_path(concert) %></td>
+				<td><%= link_to "Destroy", concert_path(concert), method: :delete, data: {confirm: "Are you sure?"} %></td>
+			</tr>
+		</div>
+	<% end %>
+	</table>
+</div>
+</div>
+
+
+
+	<div id="new_concert">
+			<p><%= link_to "New concert", new_concert_path %></p>
+	</div>
+
+<footer id="f_index"> Grupo4 </footer>
