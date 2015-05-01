@@ -28,7 +28,7 @@ class ConcertsController < ApplicationController
   def update
     @concerts = Concert.find(params[:id])
     @concerts.update(concert_params)
-    redirect_to concert_path(@concert)
+    redirect_to concerts_path(@concert)
   end
 
   def destroy
@@ -36,6 +36,15 @@ class ConcertsController < ApplicationController
     @concerts.destroy
 
     redirect_to root_path
+  end
+
+ def like
+    @concert = Concert.find(params[:id])
+    @concert.likes = @concert.likes + 1;
+    @concert.save
+     
+    @concerts = Concert.find(params[:id])
+    render :show   
   end
 
   private

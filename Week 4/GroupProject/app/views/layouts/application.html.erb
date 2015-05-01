@@ -8,7 +8,22 @@
 </head>
 <body>
 
+
+		<aside id="barra_lateral">
+			<h2 >Proximamente</h2>
+					<ul>
+						<% Concert.all.each do |concert|%>
+						<% if ((concert.date.mon === Time.now.month)&&(concert.date.year === Time.now.year)) %>
+						<%= link_to(concert.name, concert_path(concert.id))%> <br>
+						<%end%>
+						<%end%>
+					</li>
+				</ul>
+		</aside>
+
+
 <%= yield %>
+
 
 </body>
 </html>

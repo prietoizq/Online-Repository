@@ -3,6 +3,8 @@
 body {
 	background: url('bg.jpg') no-repeat;
 	background-size: cover;
+	background-attachment: fixed;
+	
 	margin: auto;
 	padding: auto;
 	font-family: Georgia, "Times New Roman", Times, serif;
@@ -101,6 +103,12 @@ footer {
 
 }
 
+#barra_lateral{
+	background: white;
+	margin-top: 40px;
+	float: right;
+	width: 20%;
+}
 
 /*-------------------SHOW-----------------------*/
 

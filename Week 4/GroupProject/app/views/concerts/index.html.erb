@@ -1,4 +1,15 @@
-<header> CONCIERTOS </header>
+<!-- <header> CONCIERTOS </header> -->
+	<div id="container_index">
+			<h1>ESTA NOCHE:</h1>
+		<% Concert.all.each do |concert|%>
+			
+				
+				<% if ((concert.date.day === Time.now.day)&&(concert.date.mon === Time.now.month)&&(concert.date.year === Time.now.year)) %>
+					<h1> <%= link_to(concert.name, concert_path(concert.id))%> <h1>	
+				<%end%>
+			
+			<%end%>
+	</div>
 
 <div id="container_index">
 	<h1 id="index_h_one"> LISTA DE CONCIERTOS MADRID </h1>
@@ -20,6 +31,24 @@
 	</table>
 </div>
 </div>
+
+
+<% hash ={} %>
+<% @concerts.each do |x| %>	
+	<%	hash[x.name] = x.likes %>
+<% end %>
+
+	<% hash2 = hash.sort_by {|x,y| y} %>
+	<% hash2.reverse! %>
+
+
+<ul>
+<% hash2.each do |x, y| %>	
+		<li> <%= x %> : <%= y %> likes </li>
+	<%end%>
+</ul>
+
+
 
 
 

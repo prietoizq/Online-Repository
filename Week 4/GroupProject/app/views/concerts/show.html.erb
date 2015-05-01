@@ -30,5 +30,11 @@
 		<%= link_to "Back", concerts_path %>
 	</div>
 
+	<div id="two">
+		<%= @concerts.likes %> <%= link_to 'Like', :controller => :concerts, :action => :like %>
+	</div>
+	
+	
+
 </div>
 <footer id="f_show"> Grupo4 </footer>
