@@ -1,4 +1,4 @@
-
+ <header> CONCIERTOS </header>
 
 
 <div id="container_edit">
@@ -7,32 +7,32 @@
 
   <table border="1" cellspacing="0">
         <tr>
-             <td class="title"><%= f.label :name %></td>
+             <td class="title2"><%= f.label :name %></td>
              <td class="title"><%= f.text_field :name %></td>
         </tr>
 
         <tr>
-            <td class="title"><%= f.label :venue %></td>
+            <td class="title2"><%= f.label :venue %></td>
             <td class="title"><%= f.text_field :venue %></td>
          </tr>
 
          <tr>
-             <td class="title"><%= f.label :city %></td>
+             <td class="title2"><%= f.label :city %></td>
              <td class="title"><%= f.text_field :city %></td>
           </tr>
 
           <tr>
-            <td class="title"><%= f.label :date %></td>
+            <td class="title2"><%= f.label :date %></td>
             <td class="title"><%= f.text_field :date %></td>
           </tr>
 
           <tr>
-             <td class="title"><%= f.label :price %></td>
+             <td class="title2"><%= f.label :price %></td>
              <td class="title"><%= f.text_field :price %></td>
           </tr>
 
           <tr>
-             <td class="title"><%= f.label :description %></td>
+             <td class="title2"><%= f.label :description %></td>
              <td class="title"><%= f.text_area :description %></td>
           </tr>
       </table>
@@ -40,6 +40,7 @@
     <p><%= f.submit %></p>
  </div>
   <% end %>
+
 
     <div id="back_button"><%= link_to 'Back', concerts_path %></div>
 

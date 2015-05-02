@@ -1,7 +1,7 @@
 <header> PROXIMAMENTE... </header>
 
 <%= form_for @concerts do |f| %>
-  <p>
+  <p id="top_name">
     <%= f.label :name %> <br>
     <%= f.text_field :name %>
   </p>
@@ -28,7 +28,7 @@
     <%= f.text_area :description %>
   </p>
 
-  <p>
+  <p id="b_create">
     <%= f.submit %>
   </p>
 <% end %>
