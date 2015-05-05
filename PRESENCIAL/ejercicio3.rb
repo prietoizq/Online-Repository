@@ -3,6 +3,7 @@ def PalindromeTwo(str)
   return str 
 end
 
+#para este ejercicio habría que usar una expresion regular para detectar si hay letras (www.rubular.com)
 
 def sinSimbolos(string)
 	cadena = ""
