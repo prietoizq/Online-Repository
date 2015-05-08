@@ -5,11 +5,16 @@ class Game
     def initialize character
         @character = character
         @rooms = []
+        @objects = []
         @actual_room
     end
 
     def add_room room
         @rooms << room
+    end
+
+    def add_objects object
+        @objects << object 
     end
 
     def show_room id
@@ -18,27 +23,40 @@ class Game
     end
 
     def start
+        puts "\n \n ************** BIENVENIDO A GAME OF ROOMS *************** \n ********** Pulsa cualquier tecla para empezar ***********"
+        puts " ***** Escribe INVENTORY para acceder al inventario ****** \n *** Pulsa SAVE o LOAD para cargar o guardar la partida **"
+        wait = gets.chomp
         end_game = false
         while end_game === false
             play
             if @character.position === 7
+                puts "*******Felicidades! has acabado el juego*********"
                 end_game = true
             end
         end
     end
 
-
     def play
 
         playing = true
+        puts " "
         show_room @character.position
+        show_objects
+        show_exits
 
         while playing
             puts '>'
             direction = gets.chomp.upcase
             target = execute_direction direction
-            if target === nil
-                puts "Eso no es una dirección válida. Prueba a poner W/E/N/S"
+            if direction === "COGER"
+                pick_up_objects
+            elsif direction === "INVENTORY"
+                show_inventory
+            elsif direction.include?("SOLTAR")
+                drop_objects direction
+            elsif direction === "SAVE"
+            elsif target === nil
+                puts "Eso no es una dirección válida. Prueba a poner N(NORTE) S(SUR) E(ESTE) O(OESTE)"
             else
                 @character.position = target
                 playing = false
@@ -47,9 +65,53 @@ class Game
     end
 
     def execute_direction direction
-
         @actual_room.paths[direction.to_sym]
 
+    end
+
+    def show_exits
+        @actual_room.paths.each_key do |exit|
+            puts "Salida: " + exit.to_s
+        end     
+    end
+
+    def show_objects
+        @objects.each do |object|
+            if object.position === @character.position
+                puts "Puedes ver un #{object.name.to_s} tirado en el suelo. Si quieres puedes COGER-lo"
+            end
+        end
+    end
+
+    def pick_up_objects
+        @objects.each do |object|
+            if object.position === @character.position
+                @character.inventory.push(object.name)
+                puts "Recoges el #{object.name.to_s} del suelo"
+                object.position = -1
+            end
+        end
+    end 
+
+    def drop_objects string
+        object = string.split("SOLTAR ")[1].downcase.to_sym
+
+            if @character.inventory.include?(object)
+                object_to_drop = @objects.find{|x| object === x.name }
+                object_to_drop.position = @character.position
+                puts "Sueltas el #{object_to_drop.name}"
+                @character.inventory.delete(object_to_drop.name)
+            end
+    end
+
+
+    def show_inventory
+        if @character.inventory != []
+            puts "\n Tus posesiones son: #{@character.inventory}."
+            puts "*Escribe SOLTAR OBJETO para soltar un objeto. Escribe USAR OBJETO para usarlo*"
+        else
+            puts "No tienes nada."
+        end
     end
 end
 
@@ -68,16 +130,27 @@ end
 
 class Character
 
-    attr_accessor :position
+    attr_accessor :position, :inventory
 
     def initialize position
         @position = position # el numero de habitacion donde se encuentra
+        @inventory = []
+    end
+end
+
+
+class Object
+
+    attr_accessor :name, :position
+
+    def initialize name, position
+        @name = name
+        @position = position
     end
 end
 
 
 room = []
-
 room[0] = Room.new 1, {:O => 2, :N => 3}, "Estás en una casa. Hay una puerta hacia la calle al Norte y otra puerta que va hacia un sótano al Oeste."
 room[1] = Room.new 2, {:E => 1}, "Bajas a un sótano oscuro. Puedes volver a la planta principal de la casa por el Este."
 room[2] = Room.new 3, {:S => 1, :N => 4, :E => 5}, "Estás en el patio de la casa. Hay una puerta que entra en la casa al Sur, un camino que va hacia el bosque al Este, y otro camino que va al Norte."
@@ -88,20 +161,20 @@ room[6] = Room.new 7, {:N => 5}, "Esta parte del bosque está muy muy oscura. No
 room[7] = Room.new 8, {:O => 4, :S => 5}, "Estás en una montaña desde donde puedes verlo todo. Al suroeste puedes observar la casa. Por el Oeste hay un camino para ir al lago, y por el Sur otro que lleva hacia el bosque."
 room[8] = Room.new 9, {:E => 4}, "Has llegado a una cueva. Cuando te canses de verla puedes volver por el Este."
 
+objects = []
+objects[0] = Object.new :mapa, 1
+objects[1] = Object.new :pico, 8
+objects[2] = Object.new :farol, 3
+objects[3] = Object.new :llavero, 9
+objects[4] = Object.new :palo, 5
+objects[5] = Object.new :cuchillo, 2
+
 
 player = Character.new 1
 
 game = Game.new player
 
 room.each {|x| game.add_room x}
-
-=begin
-game.show_room 4
-
-puts game.actual_room
-
-puts game.actual_room.paths[:W]
-
-=end
+objects.each {|x| game.add_objects x}
 
 game.start
