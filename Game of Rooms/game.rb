@@ -39,13 +39,15 @@ class Game
     def play
 
         playing = true
-        puts " "
-        show_room @character.position
-        show_objects
-        show_exits
 
         while playing
+
+            puts " "
+            show_room @character.position
+            show_objects
+            show_exits
             puts '>'
+
             direction = gets.chomp.upcase
             target = execute_direction direction
             if direction === "COGER"
@@ -55,8 +57,11 @@ class Game
             elsif direction.include?("SOLTAR")
                 drop_objects direction
             elsif direction === "SAVE"
+                save_game
+            elsif direction === "LOAD"
+                load_game
             elsif target === nil
-                puts "Eso no es una dirección válida. Prueba a poner N(NORTE) S(SUR) E(ESTE) O(OESTE)"
+                puts "\n Eso no es una dirección válida. Prueba a poner N(NORTE) S(SUR) E(ESTE) O(OESTE)"
             else
                 @character.position = target
                 playing = false
@@ -104,7 +109,6 @@ class Game
             end
     end
 
-
     def show_inventory
         if @character.inventory != []
             puts "\n Tus posesiones son: #{@character.inventory}."
@@ -112,6 +116,31 @@ class Game
         else
             puts "No tienes nada."
         end
+    end
+
+    def save_game
+        array_objects_position = []
+        @objects.each do |x|
+            array_objects_position << x.position
+        end
+
+        IO.write('save_character_position.txt', @character.position)
+        IO.write('save_object_position.txt', array_objects_position)
+        IO.write('save_inventory.txt', @character.inventory)      
+        puts "PARTIDA GUARDADA"
+    end
+
+    def load_game
+        @character.position = IO.read('save_character_position.txt').to_i
+        @character.inventory = IO.read('save_inventory.txt')
+        array_objects_position = IO.read('save_object_position.txt')
+        n = 0
+        @objects.each do |object|
+            object.position = array_objects_position[n]
+            n += 1
+        end
+        @actual_room = @rooms.find{|x| @character.position === x.id }
+        puts "PARTIDA CARGADA"
     end
 end
 
@@ -151,6 +180,8 @@ end
 
 
 room = []
+
+
 room[0] = Room.new 1, {:O => 2, :N => 3}, "Estás en una casa. Hay una puerta hacia la calle al Norte y otra puerta que va hacia un sótano al Oeste."
 room[1] = Room.new 2, {:E => 1}, "Bajas a un sótano oscuro. Puedes volver a la planta principal de la casa por el Este."
 room[2] = Room.new 3, {:S => 1, :N => 4, :E => 5}, "Estás en el patio de la casa. Hay una puerta que entra en la casa al Sur, un camino que va hacia el bosque al Este, y otro camino que va al Norte."
@@ -168,6 +199,9 @@ objects[2] = Object.new :farol, 3
 objects[3] = Object.new :llavero, 9
 objects[4] = Object.new :palo, 5
 objects[5] = Object.new :cuchillo, 2
+
+
+mapa = Object.new :map, 1
 
 
 player = Character.new 1
