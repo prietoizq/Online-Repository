@@ -1,0 +1,38 @@
+<% if flash[:notice] %>
+	<%= flash[:notice] %>
+<% end %>
+
+<h1> <%= link_to("VOLVER A LAS SUBASTAS", products_path) %> </h1>
+<h1> PRODUCTO SUBASTADO: </h1>
+
+<ul>
+		<hr>
+		<li>Nombre del producto:<strong> <%= @product.name %></strong> Usuario: <strong> <%= @product.user %></strong></li> 
+		<li type="none">Descripción: <%= @product.description %></li>
+		<li type="none">Fecha límite para pujar: <strong><%= @product.date_limit %></strong></li>
+		<li type="none">Precio inicial: <strong><%= @product.price %></strong> €</li>
+		<li type="none"><button><%= (link_to("PUJAR", new_product_bid_path(@product))) unless @product.item_sold? %></button></li>
+		<br>
+		<hr>
+</ul>
+
+<% if @product.bids.empty? %>
+	No hay pujas aún para este producto
+
+<% elsif @product.item_sold? %>
+	<h2> Producto VENDIDO al usuario <%= @product.user %> por el módico precio de <%= @product.price %> € </h2>
+
+<% elsif %>
+
+<h2> PUJAS A ESTE PRODUCTO: </h2>
+<ul>
+	<% @product.bids.sort_by{|b| b.offer}.reverse.each do |bid| %>
+			<hr>
+			<li>Usuario: <strong> <%= bid.user_offer %></strong></li> 
+			<li type="none">OFERTA: <strong><%= bid.offer %> €</strong></li>
+			<li type="none">Fecha: <%= bid.date %></li>
+			<br>
+			<hr>
+		<% end %>
+</ul>
+<% end %>

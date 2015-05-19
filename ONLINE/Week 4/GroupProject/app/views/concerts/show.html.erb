@@ -1,0 +1,40 @@
+<header> MADRID ACTUAL </header>
+
+<div id="container_show">
+
+		<h1 id="band_name"> 
+			<%= @concerts.name %>
+		</h1>
+
+	<div id="horizontal_show">
+		<ul>
+			<li>Venue: <span><%= @concerts.venue %> | </span> </li>
+			<li>City: <span><%= @concerts.city %> | </span> </li>
+			<li>Date: <span><%= @concerts.date %> | </span> </li>
+			<li>Price  <span>| <%= @concerts.price %>€</span> </li>
+		</ul>
+	</div>
+
+	<div id="description">
+		<p>Description:	<%= @concerts.description %></p>
+	</div>
+
+</div>
+
+<div id="links">
+
+	<div id="one">
+		<%= link_to "Edit", edit_concert_path(@concerts) %>
+	</div>
+	<div id="two">	
+		<%= link_to "Back", concerts_path %>
+	</div>
+
+	<div id="two">
+		<%= @concerts.likes %> <%= link_to 'Like', :controller => :concerts, :action => :like %>
+	</div>
+	
+	
+
+</div>
+<footer id="f_show"> Grupo4 </footer>

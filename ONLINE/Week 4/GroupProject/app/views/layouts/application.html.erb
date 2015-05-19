@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GroupProject</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+
+	<aside id="barra_lateral">
+ 		<h1>ESTA NOCHE</h1>
+	 	<% Concert.all.each do |concert|%>
+			 <% if ((concert.date.day === Time.now.day)&&(concert.date.mon === Time.now.month)&&(concert.date.year === Time.now.year)) %>
+	 			<h3> <%= link_to(concert.name, concert_path(concert.id))%> </h3> 
+	 		<%end%>
+	 
+	 		<%end%>
+	
+			<h2>Proximamente</h2>
+					<p>
+						<% Concert.all.each do |concert|%>
+						<% if ((concert.date.mon === Time.now.month)&&(concert.date.year === Time.now.year)) %>
+						<%= link_to(concert.name, concert_path(concert.id))%> <br>
+						<%end%>
+						<%end%>
+					</p>
+		</aside>
+
+
+<%= yield %>
+
+
+</body>
+</html>

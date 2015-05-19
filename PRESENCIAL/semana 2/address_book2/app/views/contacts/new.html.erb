@@ -1,0 +1,22 @@
+<% if @contact.errors.any? %>
+  <ul>
+    <% @contact.errors.full_messages.each do |error_msg| %>
+      <li><%= error_msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<%= form_for @contact do |f| %> 
+
+  <%= f.label :name %> 
+  <%= f.text_field :name %> 
+  <br> 
+  
+  <%= f.label :address %> 
+  <%= f.text_field :address %> 
+  <br> 
+
+
+  <%= f.submit 'Save' %> 
+<% end %> 

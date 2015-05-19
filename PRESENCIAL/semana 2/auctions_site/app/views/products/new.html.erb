@@ -1,0 +1,15 @@
+<% if flash[:alert] %>
+	<%= flash[:alert] %>
+<% end %>
+
+<h1> SUBASTA TU PRODUCTO: </h1>
+
+<% if @product.errors.any? %>
+	<ul>
+		<% @product.errors.full_messages.each do |error_msg| %>
+			<li><%= error_msg %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+<%= render "form" %>

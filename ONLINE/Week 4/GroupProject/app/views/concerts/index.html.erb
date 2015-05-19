@@ -1,0 +1,48 @@
+<header> CONCIERTOS </header>
+ 	
+ 	<h1 id="index_h_one"> LISTA DE CONCIERTOS MADRID </h1>
+<div id="container_index">
+ 	
+ 	 <div id="index_links"> 
+
+ 		<table border="1" cellspacing="0" align="center">
+ 			<% @concerts.each do |concert| %>
+
+ 		<div> 
+	 		<tr id="group_name"><td rowspan="2"><%= concert.name %></td></tr>
+	 		<tr>
+				 <td><%= link_to "Show", concert_path(concert)%></td>
+				 <td><%= link_to "Edit", edit_concert_path(concert) %></td>
+				 <td><%= link_to "Destroy", concert_path(concert), method: :delete, data: {confirm: "Are you sure?"} %></td>
+	 		</tr>
+	 	</div>
+		 <% end %>
+	    </table>
+		</div>
+	</div>
+
+		
+		<aside id="barra_lateral_derecha_index">
+				<h1> LOS MÁS POPULARES </h1>
+				<% hash ={} %>
+			 		<% @concerts.each do |x| %> 
+					<% hash[x.name] = x.likes %>
+				 <% end %>
+
+				 <% hash2 = hash.sort_by {|x,y| y} %>
+				 <% hash2.reverse! %>
+
+		 			<% hash2[0..9].each do |x, y| %> 
+						<p><%= x %> : <%= y %> likes</p>
+				<% end %>
+
+			 		
+
+		</aside>
+
+
+ <div id="new_concert">
+ <p><%= link_to "New concert", new_concert_path %></p>
+ </div>
+
+<footer id="f_index"> Grupo4 </footer>

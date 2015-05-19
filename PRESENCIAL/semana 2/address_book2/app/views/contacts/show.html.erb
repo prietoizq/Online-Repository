@@ -1,0 +1,11 @@
+<h1> Contact </h1>
+<ul> 
+	<li>NOMBRE: <%= @contact.name %></li>  
+	<li>DIRECCIÓN: <%= @contact.address %></li>
+	<li>TELÉFONOS: <% @contact.phones.each do |phone| %>
+	 	<%= phone.number %>
+	 	<% end %></li> 
+	<li>EMAILS: <% @contact.emails.each do |email| %>
+		<%= email.address %> 
+	 	<% end %></li>
+</ul>

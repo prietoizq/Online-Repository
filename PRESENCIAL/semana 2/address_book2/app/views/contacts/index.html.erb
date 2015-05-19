@@ -1,0 +1,18 @@
+<h1> Address Book </h1>
+
+<ul> 
+	<% @contacts.each do |contact| %>
+	<li>NOMBRE: <%= contact.name %>  --  
+		DIRECCIÓN: <%= contact.address %> --
+	    TELÉFONOS: <% contact.phones.each do |phone| %>
+	 	<%= phone.number %> -
+	 	<% end %> -- 
+	 	EMAILS: <% contact.emails.each do |email| %>
+	 	<%= email.address %>
+	 	<% end %> 
+	</li>
+<% end %>
+
+<ul>Crear NUEVO contacto: </ul>
+
+</ul>

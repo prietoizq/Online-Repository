@@ -1,0 +1,20 @@
+<% if flash[:notice] %>
+	<%= flash[:notice] %>
+<% end %>
+
+<h1><%= @project.name %></h1>
+<ul>
+	<% @entries.each do |entry| %>
+		<li>
+			<%= entry.hours %> h
+			<%= entry.minutes %> m -
+			<%= entry.date %>
+			<%= entry.id %>
+		</li>
+	<% end %>
+</ul>
+
+<ul>
+<%= link_to("Projects", projects_path) %>
+<%= link_to("New entry", new_project_entry_path(@project)) %>
+</ul>

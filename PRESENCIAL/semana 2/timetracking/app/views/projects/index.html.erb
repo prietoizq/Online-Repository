@@ -1,0 +1,21 @@
+<% if flash[:notice] %>
+	<%= flash[:notice] %>
+<% end %>
+
+<h1> LAST 10 PROJECTS </h1>
+
+<ul>
+	<% @projects.each do |project| %>
+		<li><%= project.name %>
+			<% if project.description != nil %>
+				<%= " - #{project.description}" %>
+			<% end %>
+			<%= link_to("- Show", project_path(project)) %>
+			<%= link_to("- Edit", edit_project_path(project)) %>
+			<%= link_to("- Destroy", project_path(project), method: :delete,
+			data: {confirm: "Are you sure?"}) %>
+		</li>
+	<% end %>
+</ul>
+
+<%= link_to("New project", new_project_path) %>

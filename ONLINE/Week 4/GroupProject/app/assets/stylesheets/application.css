@@ -1,0 +1,417 @@
+/*-------------------GENERAL-----------------------*/
+
+body {
+	background: url('bg.jpg') no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	
+	margin: auto;
+	padding: auto;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+#container_index {
+	margin: 0.1em auto auto auto;
+	padding: 0.5em;
+
+	width: 40%;
+
+
+	background-color: #FFD078;
+	outline: 2px solid black;
+
+	text-align: center;
+
+}
+
+#container_show {
+	margin: 3.5em auto auto auto;
+	padding: 0.5em;
+
+	width: 60%;
+	height: 535px;
+
+	background-color: #FFD078;
+	outline: 2px solid black;
+
+	text-align: center;
+
+}
+
+
+#back_button {
+	width: 16%;
+	text-align: center;
+	background-color: #FFD078;
+	outline: 2px solid black;
+
+	position: relative;
+	left: 41%;
+	margin: .7em;
+}
+
+#back_button a {
+	text-decoration: none;
+	color: black;
+	font-weight: bolder;
+}
+
+
+#back_button a:hover {
+	color: #17A7BD;
+}
+h1, h2 {
+	color: white;
+	text-shadow: 0 0 0.1em #FF6600, 0 0 0.2em #FF6600, 0 0 0.3em #FF6600,
+	0 0 0.4em #FF6600, 0 0 0.6em #FF6600, 0 0 0.8em #FF6600,
+	0 0 1.0em #FF6600;
+}
+
+header {
+	background-color: white ;
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+
+}
+
+footer {
+	background-color: white ;
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+
+	margin: auto;
+	padding: auto;
+
+}
+
+#barra_lateral{
+	background: orange;
+	outline: 2px solid black;
+
+	position: absolute;
+	float:left;
+	margin-top: 1.31em;
+	width: 15%;
+	height: 500px;
+
+	text-align: center;
+}
+
+#barra_lateral h2,h1 {
+
+	text-align: center;
+}
+
+#barra_lateral a {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+}
+
+#barra_lateral a:hover {
+	color: #17A7BD;
+	background-color: white;
+}
+
+#barra_lateral_derecha_index {
+	background: orange;
+	outline: 2px solid black;
+
+	position: relative;
+	top: -43.70em;
+	float: right;
+	margin-top: 1.31em;
+	width: 15%;
+	height: 500px;
+
+	text-align: center;
+	overflow: hidden;
+}
+
+#barra_lateral_derecha_show {
+	background: orange;
+	outline: 2px solid black;
+
+	position: relative;
+	float: right;
+	margin-top: 1.31em;
+	width: 15%;
+	height: 500px;
+
+	text-align: center;
+}
+
+#barra_lateral_derecha_edit {
+	background: orange;
+	outline: 2px solid black;
+
+	position: relative;
+	float: right;
+	margin-top: 1.31em;
+	width: 15%;
+	height: 500px;
+
+	text-align: center;
+}
+
+#barra_lateral_derecha_new {
+	background: orange;
+	outline: 2px solid black;
+
+	position: relative;
+	float: right;
+	margin-top: 1.31em;
+	width: 15%;
+	height: 500px;
+
+	text-align: center;
+}
+
+/*-------------------SHOW-----------------------*/
+
+#band_name {
+	color: white;
+	font-size: 3em;
+	position: relative;
+
+	left: 0.2em;
+}
+
+#horizontal_show {
+	width: 100%;
+	background-color: #C2CDFF;
+	float: left;
+}
+
+#horizontal_show ul {
+	list-style: none;
+}
+
+#horizontal_show ul li {
+	float: left;
+	margin: 0.7em;	
+
+	position: justify;
+	left: 5%;
+}
+
+#horizontal_show ul li span {
+	font-weight: bold;
+}
+
+#description {
+
+	width: 80%;
+	background-color: white;
+	padding: 2.5em;
+	margin: 15% auto auto auto;
+
+	font-size: 0.9em;
+	text-align: justify;
+}
+
+#description p {
+	padding: 0.5em auto auto auto;
+	margin: 0.5em auto auto auto;
+
+}
+
+#group_name {
+	background-color: #ED7E00;
+}
+
+#links {
+	overflow: hidden;
+}
+
+#one {
+	height: 8%;
+	width: 8%;
+	text-align: center;
+	background-color: #FFD078;
+	outline: 2px solid black;
+
+	position: relative;
+	margin: .5em;
+	padding: .5em;
+
+	left: 40%;
+
+	float: left;
+}
+
+#one a {
+	text-decoration: none;
+	color: black;
+	font-weight: bolder;
+}
+
+#one a:hover {
+		color:#17A7BD;
+	}
+
+#two {
+	height: 8%;
+	width: 8%;
+	text-align: center;
+	background-color: #FFD078;
+	outline: 2px solid black;
+
+	position: relative;
+	margin: .5em;
+	padding: .5em;
+
+	left: 40%;
+	overflow: hidden;
+}
+
+#two a {
+	text-decoration: none;
+	color: black;
+	font-weight: bolder;
+}
+
+#two a:hover {
+	color:#17A7BD;
+}
+#f_show {
+	position: relative;
+	top: 4.9em;
+}
+/*_______________________INDEX_______________________*/
+#container_index2 {
+	padding: auto;
+	margin: auto;
+
+	outline: 1px solid black;
+	width: 30%;
+
+}
+
+#index_links tr td {
+	padding: 1em;
+	font-weight: bold;
+	
+}
+
+#index_links tr td a {
+	text-decoration: none;
+	color: black;
+	
+}
+
+#index_links tr td a:hover {
+	color: #17A7BD;
+
+}
+
+#new_concert {
+
+	width: 16%;
+	text-align: center;
+	background-color: #FFD078;
+	outline: 2px solid black;
+
+	position: relative;
+	left: 41%;
+	margin: .3em;
+}
+
+#new_concert a {
+	text-decoration: none;
+	color: black;
+	font-weight: bolder;
+}
+
+#new_concert a:hover {
+	color: #17A7BD;
+}
+
+#index_h_one {
+	position: relative;
+	top: -5%;
+
+}
+
+#f_index {
+	position: relative;
+	top: 28.2em;
+}
+
+/*----------------------EDIT---------------------*/
+
+#container_edit {
+	margin: 2em auto auto auto;
+	padding: 0.5em;
+
+	width: 45%;
+
+	background-color: #FFD078;
+	outline: 2px solid black;
+
+	text-align: center;
+
+}
+
+#container_edit table {
+	padding: auto;
+	margin: auto;
+
+}
+
+#f_edit {
+	position: relative;
+	top: 22.7em;
+}
+
+#container_edit td {
+	padding: 1em;
+}
+
+.title {
+	background-color: white;
+}
+
+.title2 {
+	font-weight: bold;
+	background-color: #ED7E00;
+}
+
+/*------------------NEW--------------------------*/
+
+#f_new {
+	position: relative;
+	top: 18.6em;
+}
+
+#back_button_new {
+	width: 16%;
+	text-align: center;
+	background-color: #FFD078;
+	outline: 2px solid black;
+
+	position: relative;
+	left: 40.5%;
+	margin: .7em;
+}
+
+#back_button_new a {
+	text-decoration: none;
+	color: black;
+	font-weight: bolder;
+}
+
+
+#back_button_new a:hover {
+	color: #17A7BD;
+}
+
+#b_create {
+
+	padding-bottom: 1.5em;
+}
+
+#top_name {
+	padding-top: 1em;
+}

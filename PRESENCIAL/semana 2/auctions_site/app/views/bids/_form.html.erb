@@ -1,0 +1,15 @@
+
+<%= form_for [@product, @bid] do |f| %>
+  INTRODUCE TU CORREO DE USUARIO:
+  <%= f.text_field :user_offer %>
+  <br><br>
+
+  INTRODUCE TU OFERTA PARA ESTE PRODUCTO:
+  <%= f.number_field :offer, step: 0.01 %>
+  <br><br>
+
+
+  <%= f.submit 'Aceptar' %>
+<% end %>
+
+<br>

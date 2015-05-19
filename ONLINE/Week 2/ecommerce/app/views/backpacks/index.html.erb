@@ -1,0 +1,20 @@
+<h1>Listing Backpacks</h1> 
+
+
+<% @backpacks.each do |backpack|%>
+	<div><%= backpack.name %>  
+		<%= link_to 'Show',  backpack_path(backpack)%>
+		<%= link_to 'Edit', edit_backpack_path(backpack) %>
+		<%= link_to 'Destroy', backpack_path(backpack), method: :delete, data: { confirm: 'Delete backpack?' } %>
+
+	</div>
+<% end %>
+
+
+<p>
+    <%= link_to 'New backpack', new_backpack_path %>
+</p>
+
+<p>
+	<%= link_to 'Home', root_path%>
+</p>

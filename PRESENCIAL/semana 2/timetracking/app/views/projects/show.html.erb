@@ -1,0 +1,29 @@
+<% if flash[:notice] %>
+	<%= flash[:notice] %>
+<% end %>
+
+<h1> SHOW PROJECT </h1>
+
+<ul>
+	<li><%= @project.name %> </li>
+	<% if @project.description != "" %>
+		<li><%= @project.description %></li>
+	<% end %>
+</ul>
+<ul>
+	<% @project.entries.each do |entry| %>
+		<li>
+			<%= entry.hours %> h
+			<%= entry.minutes %> m -
+			<%= entry.date %>
+			<%= link_to(" - Edit Entry", edit_project_entry_path(@project, entry)) %>
+			<%= link_to(" - Destroy Entry", project_entry_path(@project, entry), method: :delete,
+			data: {confirm: "Are you sure?"}) %>
+
+		</li>
+	<% end %>
+</ul>
+
+<%= link_to("Projects", projects_path) %>
+<%= link_to("New Entry", new_project_entry_path(@project)) %>
+<%= link_to("Edit Project", edit_project_path(@project)) %>

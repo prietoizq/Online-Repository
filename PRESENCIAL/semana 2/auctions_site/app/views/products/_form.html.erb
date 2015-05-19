@@ -1,0 +1,27 @@
+
+<%= form_for @product do |f| %>
+  INTRODUCE TU CORREO DE USUARIO:
+  <%= f.text_field :user %>
+  <br><br>
+
+  INTRODUCE EL NOMBRE DEL PRODUCTO:
+  <%= f.text_field :name %>
+  <br><br>
+
+  DESCRIPCIÓN: 
+  <%= f.text_area :description %>
+  <br><br>
+
+  FECHA LÍMITE DE SUBASTA:
+  <%= f.date_field :date_limit %>
+  <br><br>
+
+  PRECIO:
+  <%= f.number_field :price %>
+  <br><br>
+
+  <%= f.submit 'Aceptar' %>
+<% end %>
+
+<br>
+<%= link_to("Cancelar", products_path) %>
