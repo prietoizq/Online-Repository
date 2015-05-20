@@ -1,0 +1,20 @@
+<% if flash[:notice] %>
+	<%= flash[:notice] %>
+<% end %>
+
+<h1> LIBROS MÁS RECIENTES </h1>
+<%= link_to("Añadir libro", new_book_path) %>
+
+<ul>
+	<% @books.each do |book| %>
+		<hr>
+		<li>Nombre del libro:<strong> <%= link_to(book.name, book_path(book)) %></strong>
+		<li type="none">Descripción: <%= book.description %></li>
+		<li type="none">Precio: <strong><%= book.price %> €</strong></li>
+		<li type="none">Nota: <strong><%= book.mark %></strong></li>
+		<br>
+		<hr>
+	<% end %>
+</ul>
+
+

@@ -1,0 +1,37 @@
+<% if flash[:notice] %>
+	<%= flash[:notice] %>
+<% end %>
+
+<h1> <%= @book.name %> </h1>
+
+<button><%= link_to("Añadir review del libro", new_book_review_path(@book)) %></button>
+
+<ul>
+		<hr>
+		<li>Titulo del libro:<strong> <%= @book.name %></strong></li>
+		<li type="none">Descripción: <%= @book.description %></li>
+		<li type="none">Precio: <strong><%= @book.price %> €</strong></li>
+		<li type="none">Nota: <strong><%= @book.calculate_mark %></strong></li>
+		<br>
+		<hr>
+</ul>
+
+<%= link_to("Volver", books_path) %>
+<%= link_to("Edit", edit_book_path(@book)) %>
+<%= link_to("Eliminar libro", book_path(@book), method: :delete, data: {confirm: "¿De verdad que quieres destruir el libro?"}) %>
+
+<% if @book.reviews.empty? %>
+	<h2>Todavía no hay reviews de este libro</h2>
+<% elsif %>
+<h2> REVIEWS DE USUARIOS </h2>
+<ul>
+	<% @book.reviews.each do |review| %>
+			<hr>
+			<li>Usuario: <strong> <%= review.user %></strong></li> 
+			<li type="none">NOTA: <strong><%= review.rating %></strong></li>
+			<li type="none">Comentario: <%= review.comment %></li>
+			<br>
+			<hr>
+		<% end %>
+</ul>
+<% end %>

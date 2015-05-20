@@ -1,0 +1,18 @@
+<% if flash[:alert] %>
+	<%= flash[:alert] %>
+<% end %>
+
+<h2> AÑADIR LIBRO </h2>
+
+<% if @book.errors.any? %>
+	<ul>
+		<% @book.errors.full_messages.each do |error_msg| %>
+			<li><%= error_msg %></li>
+		<% end %>
+	</ul>
+<% end %>
+
+<%= render "form" %>
+
+<br>
+<%= link_to("Cancelar", books_path) %>
