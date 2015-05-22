@@ -1,0 +1,84 @@
+.btn-group.col-md-8{
+	margin-top: 20px;
+}
+
+header{
+	margin-top: 12px;
+}
+
+h5{
+	margin: 0px;
+}
+
+.portada{
+	margin-top: 225px;
+	text-align: center;
+}
+
+
+.principal{
+	color: white;
+	margin: 0px;
+	padding-right: 0px;
+	padding-left: 0px;
+	background-image: url("http://i.imgur.com/aHSTiYf.jpg");
+	margin-top: 15px;
+	height: 600px;
+
+}
+
+.btn-primary{
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+
+.second{
+	padding: 60px;
+	background-color: rgba(210, 20, 64, 1);
+	text-align: center;
+	color: white;
+	height: 350px;
+}
+
+.tercero{
+	margin-top: 10px;
+	margin-bottom: 80px;
+}
+
+.imagen{
+	height: 210px;
+	width: 260px;
+	margin-right: 20px;
+	margin-left: 10px;
+	text-align: center;
+}
+
+p{
+	margin-left: 40px;
+	width: 200px;
+}
+
+.border{
+	border: solid 10px black;
+}
+
+.last{
+	background-color: rgba(48, 48, 48, 1);
+	padding: 50px;
+	color: white;
+	height: 350px;
+}
+
+.linea{
+	margin-top: 320px;
+	height: 10px;
+	width: 100%;
+	background-color: black;
+}
+
+footer{
+	height: 50px;
+	background-color: rgba(13, 13, 13, 1);
+	color: white;
+}

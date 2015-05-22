@@ -27,3 +27,9 @@
 <%= link_to("Projects", projects_path) %>
 <%= link_to("New Entry", new_project_entry_path(@project)) %>
 <%= link_to("Edit Project", edit_project_path(@project)) %>
+
+
+
+<%= link_to("play", word_path(@)) %>
+
+	@project = Project.find params[:id]

@@ -1,0 +1,14 @@
+.my_div{
+	background: red;
+	
+	padding: 200px;
+	margin: 60px;
+	border: 20px blue dotted;
+
+	display: inline-block;
+
+}
+
+.cont:not(:first-child){
+	margin-left: -4px;
+}
